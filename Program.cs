@@ -1,11 +1,32 @@
-﻿int x=100;
-int y=0;
-int result;
-
-try{
-result=x/y ;
-Console.WriteLine("The result is :{0}",result);
+﻿int theNumber = new Random().Next(20);
+bool keepGoing = true;
+Console.WriteLine("Let's play 'Guess the number!'");
+Console.WriteLine("iam thinking of a number between 0 and 20");
+Console.WriteLine("Enter your guess, or -1 to give up");
+int guessNum =0;
+int guessCount =0;
+do {
+    Console.WriteLine("what's your Guess?");
+    string theGuess =  Console.ReadLine();
+bool result =Int32.TryParse(theGuess ,out guessNum);
+if(!result){
+    Console.WriteLine("That does not look like a number. Try again");
 }
-catch{
-    Console.WriteLine("Error!");
+else{
+    if(guessNum ==-1){
+        Console.WriteLine("i was thinking of {theNumber}");
+        keepGoing = false;
+    }
+    else{
+        guessCount ++;
+    }
+    if(guessNum ==theNumber){
+        Console.WriteLine($"You got it in {guessCount} guess");
+        keepGoing = false;
+    }
+    else {
+        Console.WriteLine("Nope ,{0} than that",guessNum < theNumber?
+        "higher" :"lower");
+    }
 }
+}while (keepGoing);
